@@ -10,7 +10,6 @@ paths:
     get:
       tags:
         - Shop
-        - default
       summary: Gebe alle Artikel
       description: Alle Artikel werden zurück gegeben
       responses:
@@ -19,6 +18,185 @@ paths:
           content:
             application/json:
               schema:
+                type: array
+                items:                  
+                  $ref: '#/components/schemas/Artikel'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Artikel'
+      
+      tags:
+        - Shop
+      summary: Lege einen Artikel an
+      description: |
+          # Ein **Artikel** wird angelegt
+
+          Ein Artikel besteht aus:
+            - name
+            - preis
+
+          Inline-style: 
+          ![alt text](https://images.clickittech.com/2020/wp-content/uploads/2022/03/10172917/Diagram-56-scaled.jpg "Logo Title Text 1")
+
+          | Tables        | Are           | Cool  |
+          | ------------- |:-------------:| -----:|
+          | col 3 is      | right-aligned | $1600 |
+          | col 2 is      | centered      |   $12 |
+          | zebra stripes | are neat      |    $1 |
+
+          <dl>
+            <dt>Definition list</dt>
+            <dd>Is something people use sometimes.</dd>
+
+            <dt>Markdown in HTML</dt>
+            <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+            <table>
+                    <thead>
+                        <tr>
+                            <th>Datum</th>
+                            <th>Empfänger/Auftraggeber</th>
+                            <th>Verwendungszweck</th>
+                            <th>Betrag</th>
+                            <th>Status</th>
+                            <th>Transaktions-ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>19.11.2024</td>
+                            <td>Gehalt Systems62</td>
+                            <td>Beraterhonorar November 2024</td>
+                            <td class="amount-cell credit">+ 8.500,00 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-001</td>
+                        </tr>
+                        <tr>
+                            <td>18.11.2024</td>
+                            <td>50Hertz Transmission GmbH</td>
+                            <td>Gehalt November 2024</td>
+                            <td class="amount-cell credit">+ 4.200,00 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-002</td>
+                        </tr>
+                        <tr>
+                            <td>17.11.2024</td>
+                            <td>Amazon AWS EMEA</td>
+                            <td>Cloud Services predigt.io</td>
+                            <td class="amount-cell debit">- 327,45 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-003</td>
+                        </tr>
+                        <tr>
+                            <td>15.11.2024</td>
+                            <td>Deutsche Telekom AG</td>
+                            <td>Geschäftskunden Rechnung 11/2024</td>
+                            <td class="amount-cell debit">- 89,90 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-004</td>
+                        </tr>
+                        <tr>
+                            <td>14.11.2024</td>
+                            <td>OpenAI Inc.</td>
+                            <td>API Credits November</td>
+                            <td class="amount-cell debit">- 245,00 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-005</td>
+                        </tr>
+                        <tr>
+                            <td>12.11.2024</td>
+                            <td>Finanzamt Gifhorn</td>
+                            <td>Umsatzsteuer-Vorauszahlung 10/2024</td>
+                            <td class="amount-cell debit">- 1.523,00 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-006</td>
+                        </tr>
+                        <tr>
+                            <td>10.11.2024</td>
+                            <td>Hetzner Online GmbH</td>
+                            <td>Dedicated Server Nov 2024</td>
+                            <td class="amount-cell debit">- 156,00 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-007</td>
+                        </tr>
+                        <tr>
+                            <td>08.11.2024</td>
+                            <td>predic8 GmbH</td>
+                            <td>Trainerhonorar GraphQL Workshop</td>
+                            <td class="amount-cell credit">+ 3.200,00 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-008</td>
+                        </tr>
+                        <tr>
+                            <td>05.11.2024</td>
+                            <td>JetBrains s.r.o.</td>
+                            <td>IntelliJ IDEA Ultimate Lizenz</td>
+                            <td class="amount-cell debit">- 149,00 €</td>
+                            <td><span class="status-executed">AUSGEFÜHRT</span></td>
+                            <td>TX-2024-11-009</td>
+                        </tr>
+                        <tr>
+                            <td>22.11.2024</td>
+                            <td>Deutsche Bundesbank</td>
+                            <td>Projektabrechnung Kafka-Integration</td>
+                            <td class="amount-cell credit">+ 6.750,00 €</td>
+                            <td><span class="status-pending">GEPLANT</span></td>
+                            <td>TX-2024-11-010</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><strong>Saldo:</strong></td>
+                            <td class="amount-cell" colspan="3"><strong>+ 20.159,65 €</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </body>
+            </html>
+            Einfachere Version (ohne Styling)
+            html<table border="1">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Beschreibung</th>
+                        <th>Betrag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>19.11.2024</td>
+                        <td>Gehalt Systems62</td>
+                        <td>8.500,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>18.11.2024</td>
+                        <td>50Hertz Gehalt</td>
+                        <td>4.200,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>17.11.2024</td>
+                        <td>AWS Hosting</td>
+                        <td>-327,45 €</td>
+                    </tr>
+                </tbody>
+            </table>
+          </dl>
+
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              description: URI des neuen Artikels
+              schema:
+                type: string
+                format: uri
+                example: http://localhost:50001/articles/xyz
+          content:
+            application/json:
+              schema:                              
                 $ref: '#/components/schemas/Artikel'
 
 
