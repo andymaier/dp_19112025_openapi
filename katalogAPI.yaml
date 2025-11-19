@@ -203,6 +203,7 @@ paths:
 components:
   schemas:
     Artikel:
+      type: object
       properties:
         id:
           type: string
@@ -216,6 +217,7 @@ components:
           example: Kirschen
         preis:
           type: number
+          format: double
           minimum: 0
           description: Preis des Artikels nicht negativ
           example: 0.99
