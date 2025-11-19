@@ -1,0 +1,46 @@
+openapi: '3.0.3'
+info:
+  title: KatalogAPI
+  version: '1.0'
+servers:
+  - url: http://localhost:50001
+  - url: http://ocp4.de:50001
+paths:
+  /articles:
+    get:
+      tags:
+        - Shop
+        - default
+      summary: Gebe alle Artikel
+      description: Alle Artikel werden zurück gegeben
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artikel'
+
+
+components:
+  schemas:
+    Artikel:
+      properties:
+        id:
+          type: string
+          maxLength: 50
+          format: uuid
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        name:
+          type: string
+          maxLength: 20
+          description: Das ist der Name des Artikels
+          example: Kirschen
+        preis:
+          type: number
+          minimum: 0
+          description: Preis des Artikels nicht negativ
+          example: 0.99
+      required:
+        - name
+        - preis
